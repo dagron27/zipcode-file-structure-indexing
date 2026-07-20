@@ -1,0 +1,21 @@
+File Structure Type: ZCR;
+Version: 1.0;
+Header Record Size: 450;
+Record Size Integer Bytes: -1;
+Size Format Type: ASCII;
+Index File Name: primaryKey.idx;
+Index File Schema: Key, Offset;
+Record Count: 5;
+Fields Per Record: 6;
+Field 1: Zip Code, Int;
+Field 2: Place Name, String;
+Field 3: State, String;
+Field 4: County, String;
+Field 5: Lat, Double;
+Field 6: Long, Double;
+Primary Key: Zip Code;                                                       
+42 501,Holtsville,NY,Suffolk,40.8154,-73.0451
+42 544,Holtsville,NY,Suffolk,40.8154,-73.0451
+39 1001,Agawam,MA,Hampden,42.0702,-72.6227
+42 1002,Amherst,MA,Hampshire,42.3671,-72.4646
+42 1003,Amherst,MA,Hampshire,42.3919,-72.5248

@@ -1,0 +1,531 @@
+Script started on 2024-04-10 16:51:58+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="173" LINES="15"]
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ g++ -o proj4_norm findZipcode.cpp primaryKeyIndex.cpp headerRecord.cpp headerBuffer.cpp buffer2.cpp zipc ode2.cppp[K
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 us_postal_codes.zcr
+File Structure Type: ZCR;
+Version: 1.0;
+Header Record Size: 450;
+Record Size Integer Bytes: -1;
+Size Format Type: ASCII;
+Index File Name: us_postal_codes.idx;
+Index File Schema: Key, Offset;
+Record Count: 40933;
+Fields Per Record: 6;
+Field 1: Zip Code, Int;
+Field 2: Place Name, String;
+Field 3: State, String;
+Field 4: County, String;
+Field 5: Lat, Double;
+Field 6: Long, Double;
+Primary Key: Zip Code;                                              
+42 501,Holtsville,NY,Suffolk,40.8154,-73.0451
+42 544,Holtsville,NY,Suffolk,40.8154,-73.0451
+39 1001,Agawam,MA,Hampden,42.0702,-72.6227
+42 1002,Amherst,MA,Hampshire,42.3671,-72.4646
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 us_postal_codes.zcr[K[K[Kidx
+head: cannot open 'us_postal_codes.idx' for reading: No such file or directory
+[0;32m@dagron27 [1;31m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_norm
+Please enter a zipcode: 501
+Zip Code: 501
+Place Name: Holtsville
+State: NY
+County: Suffolk
+Latitude: 40.8154
+Longitude: -73.0451
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 us_postal_codes.zcr
+File Structure Type: ZCR;
+Version: 1.0;
+Header Record Size: 450;
+Record Size Integer Bytes: -1;
+Size Format Type: ASCII;
+Index File Name: us_postal_codes.idx;
+Index File Schema: Key, Offset;
+Record Count: 40933;
+Fields Per Record: 6;
+Field 1: Zip Code, Int;
+Field 2: Place Name, String;
+Field 3: State, String;
+Field 4: County, String;
+Field 5: Lat, Double;
+Field 6: Long, Double;
+Primary Key: Zip Code;                                              
+42 501,Holtsville,NY,Suffolk,40.8154,-73.0451
+42 544,Holtsville,NY,Suffolk,40.8154,-73.0451
+39 1001,Agawam,MA,Hampden,42.0702,-72.6227
+42 1002,Amherst,MA,Hampshire,42.3671,-72.4646
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 us_postal_codes.zcr[K[K[Kidx
+File Structure Type: IDX;
+Version: 1.0;
+Header Record Size: 450;
+Record Size Integer Bytes: -1;
+Size Format Type: ASCII;
+Index File Name: us_postal_codes.idx;
+Index File Schema: Key, Offset;
+Record Count: 40933;
+Fields Per Record: 2;
+Field 1: Key, Int;
+Field 2: Offset, Int;
+Primary Key: Zip Code;                                                                                                                                                        
+501,450
+544,496
+1001,542
+1002,585
+1003,631
+1004,677
+1005,723
+1007,767
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 us_postal_codes.idxzcr[18P./proj4_norm -Z1022 -Z1026 -Z1026[K7
+Zip Code: 1022
+Place Name: Chicopee
+State: MA
+County: Hampden
+Latitude: 42.1934
+Longitude: -72.5544
+
+Zip Code: 1026
+Place Name: Cummington
+State: MA
+County: Hampshire
+Latitude: 42.4633
+Longitude: -72.9202
+
+Zip Code: 1027
+Place Name: Easthampton
+State: MA
+County: Hampshire
+Latitude: 42.2668
+Longitude: -72.669
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_norm -Z1022 -Z1026 -Z1027[1P[1P[1P[1P[1@5[1@0[1@1[C[C[1P[1P[1P[1P[1P -Z1027Z -Z10274 -Z10277 -Z10272 -Z10273 -Z10272 -Z1027[C[C[C81027[C1027410270102731027 1027-1027Z1027[1P027[1P27[1P7[K99950
+Zip Code: 501
+Place Name: Holtsville
+State: NY
+County: Suffolk
+Latitude: 40.8154
+Longitude: -73.0451
+
+Zip Code: 47232
+Place Name: Elizabethtown
+State: IN
+County: Bartholomew
+Latitude: 39.1243
+Longitude: -85.8153
+
+Zip Code: 81403
+Place Name: Montrose
+State: CO
+County: Montrose
+Latitude: 38.3602
+Longitude: -107.938
+
+Zip Code: 99950
+Place Name: Ketchikan
+State: AK
+County: Ketchikan Gateway
+Latitude: 55.3422
+Longitude: -131.648
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_norm -Z501 -Z47232 -Z81403 -Z99950[1P-Z99950[1P-Z99950[1P-Z99950[1P-Z99950[1P-Z99950[1P-Z99950[1P-Z99950[1PZ99950[1P-Z99950[1P-Z99950[1P-Z99950[1P-Z99950[1P-Z99950[1P-Z99950[1P-Z99950[1PZ99950[1P-Z99950[1P-Z99950[1P-Z99950[1P-Z99950[1P-Z99950[1PZ99950[C[C[C[C[C[C[C -z[KZ544 -Z38802 -Z99999[C[1@-[1@Z[1@0[1@ 
+No record found for zipcode: 0
+
+Zip Code: 99950
+Place Name: Ketchikan
+State: AK
+County: Ketchikan Gateway
+Latitude: 55.3422
+Longitude: -131.648
+
+Zip Code: 544
+Place Name: Holtsville
+State: NY
+County: Suffolk
+Latitude: 40.8154
+Longitude: -73.0451
+
+Zip Code: 38802
+Place Name: Tupelo
+State: MS
+County: Lee
+Latitude: 34.2345
+Longitude: -88.7671
+
+No record found for zipcode: 99999
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./PROJ[K[K[K[Kproj4_norm_place
+Please enter a zipcode: 501
+Zip Code: 501
+Place Name: Holtsville
+State: NY
+County: Suffolk
+Latitude: 40.8154
+Longitude: -73.0451
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 usu[K_postal_codes_place.zcr
+File Structure Type: ZCR;
+Version: 1.0;
+Header Record Size: 450;
+Record Size Integer Bytes: -1;
+Size Format Type: ASCII;
+Index File Name: us_postal_codes_place.idx;
+Index File Schema: Key, Offset;
+Record Count: 40933;
+Fields Per Record: 6;
+Field 1: Place Name, String;
+Field 2: State, String;
+Field 3: County, String;
+Field 4: Lat, Double;
+Field 5: Long, Double;
+Field 6: Zip Code, Int;
+Primary Key: Zip Code;                                        
+42 Holtsville,NY,Suffolk,40.8154,-73.0451,501
+42 Holtsville,NY,Suffolk,40.8154,-73.0451,544
+39 Agawam,MA,Hampden,42.0702,-72.6227,1001
+42 Amherst,MA,Hampshire,42.3671,-72.4646,1002
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 us_postal_codes_place.zcr[18P./proj4_norm_place -Z0 -Z99950 -Z544 -Z38802 -Z99999[4P501 -Z47232 -Z81403 -Z99950[9P1022 -Z1026 -Z1027[3Phead -n 20 us_postal_codes.idx./proj4_norm -Z1022 -Z1026 -Z1027[1@_[1@p[1@l[1@a[1@c[1@e
+Zip Code: 1022
+Place Name: Chicopee
+State: MA
+County: Hampden
+Latitude: 42.1934
+Longitude: -72.5544
+
+Zip Code: 1026
+Place Name: Cummington
+State: MA
+County: Hampshire
+Latitude: 42.4633
+Longitude: -72.9202
+
+Zip Code: 1027
+Place Name: Easthampton
+State: MA
+County: Hampshire
+Latitude: 42.2668
+Longitude: -72.669
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_norm_place -Z1022 -Z1026 -Z1027[3Phead -n 20 us_postal_codes_place.zcr[18P./proj4_norm_place -Z0 -Z99950 -Z544 -Z38802 -Z99999[4P501 -Z47232 -Z81403 -Z99950[1@_[1@p[1@l[1@a[1@c[1@e
+Zip Code: 501
+Place Name: Holtsville
+State: NY
+County: Suffolk
+Latitude: 40.8154
+Longitude: -73.0451
+
+Zip Code: 47232
+Place Name: Elizabethtown
+State: IN
+County: Bartholomew
+Latitude: 39.1243
+Longitude: -85.8153
+
+Zip Code: 81403
+Place Name: Montrose
+State: CO
+County: Montrose
+Latitude: 38.3602
+Longitude: -107.938
+
+Zip Code: 99950
+Place Name: Ketchikan
+State: AK
+County: Ketchikan Gateway
+Latitude: 55.3422
+Longitude: -131.648
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_norm_place -Z501 -Z47232 -Z81403 -Z99950[9P1022 -Z1026 -Z1027[3Phead -n 20 us_postal_codes_place.zcr[18P./proj4_norm_place -Z0 -Z99950 -Z544 -Z38802 -Z99999[1@_[1@p[1@l[1@a[1@c[1@e
+No record found for zipcode: 0
+
+Zip Code: 99950
+Place Name: Ketchikan
+State: AK
+County: Ketchikan Gateway
+Latitude: 55.3422
+Longitude: -131.648
+
+Zip Code: 544
+Place Name: Holtsville
+State: NY
+County: Suffolk
+Latitude: 40.8154
+Longitude: -73.0451
+
+Zip Code: 38802
+Place Name: Tupelo
+State: MS
+County: Lee
+Latitude: 34.2345
+Longitude: -88.7671
+
+No record found for zipcode: 99999
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_rand
+Please enter a zipcode: 96737
+Zip Code: 96737
+Place Name: Ocean View
+State: HI
+County: Hawaii
+Latitude: 19.1002
+Longitude: -155.726
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 us_postal_codes_ROWS_RANDOMIZED.zcr
+File Structure Type: ZCR;
+Version: 1.0;
+Header Record Size: 450;
+Record Size Integer Bytes: -1;
+Size Format Type: ASCII;
+Index File Name: primaryKey.idx;
+Index File Schema: Key, Offset;
+Record Count: 40933;
+Fields Per Record: 6;
+Field 1: Zip Code, Int;
+Field 2: Place Name, String;
+Field 3: State, String;
+Field 4: County, String;
+Field 5: Lat, Double;
+Field 6: Long, Double;
+Primary Key: Zip Code;                                                   
+43 96737,Ocean View,HI,Hawaii,19.1002,-155.726
+45 97134,Oceanside,OR,Tillamook,45.4549,-123.965
+55 63701,Cape Girardeau,MO,Cape Girardeau,37.3169,-89.5459
+34 88250,Hope,NM,Eddy,32.8156,-104.73
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 us_postal_codes_ROWS_RANDOMIZED.zcr./proj4_rand[K -Z1585 -Z90221 -13628
+Zip Code: 1585
+Place Name: West Brookfield
+State: MA
+County: Worcester
+Latitude: 42.2441
+Longitude: -72.1511
+
+Zip Code: 90221
+Place Name: Compton
+State: CA
+County: Los Angeles
+Latitude: 33.8796
+Longitude: -118.217
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_rand -Z1585 -Z90221 -13628Z13628
+Zip Code: 1585
+Place Name: West Brookfield
+State: MA
+County: Worcester
+Latitude: 42.2441
+Longitude: -72.1511
+
+Zip Code: 90221
+Place Name: Compton
+State: CA
+County: Los Angeles
+Latitude: 33.8796
+Longitude: -118.217
+
+Zip Code: 13628
+Place Name: Deferiet
+State: NY
+County: Jefferson
+Latitude: 44.0356
+Longitude: -75.6838
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_rand -Z1585 -Z90221 -Z13628[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K96737 -Z83303 -Z62524 -Z2673
+Zip Code: 96737
+Place Name: Ocean View
+State: HI
+County: Hawaii
+Latitude: 19.1002
+Longitude: -155.726
+
+Zip Code: 83303
+Place Name: Twin Falls
+State: ID
+County: Twin Falls
+Latitude: 42.563
+Longitude: -114.461
+
+Zip Code: 62524
+Place Name: Decatur
+State: IL
+County: Macon
+Latitude: 39.854
+Longitude: -88.9815
+
+Zip Code: 2673
+Place Name: West Yarmouth
+State: MA
+County: Barnstable
+Latitude: 41.6614
+Longitude: -70.2363
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_rand -Z96737 -Z83303 -Z62524 -Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1PZ2673[1P-Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1PZ2673[1P-Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1P-Z2673[1PZ2673[C[C[C[C[C[C [C[1@-[1@0[1@ [C[C[C[C[C[C[C - Z 9 7 1 3 4 [C - Z 6 6 0 4 5 [C - Z 9 9 9 9 9 
+Zip Code: 2673
+Place Name: West Yarmouth
+State: MA
+County: Barnstable
+Latitude: 41.6614
+Longitude: -70.2363
+
+Zip Code: 97134
+Place Name: Oceanside
+State: OR
+County: Tillamook
+Latitude: 45.4549
+Longitude: -123.965
+
+Zip Code: 66045
+Place Name: Lawrence
+State: KS
+County: Douglas
+Latitude: 38.959
+Longitude: -95.2499
+
+No record found for zipcode: 99999
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./PRO[K[K[Kproj4_rand)st[K[K[K_state
+Please enter a zipcode: 96737
+Zip Code: 96737
+Place Name: Ocean View
+State: HI
+County: Hawaii
+Latitude: 19.1002
+Longitude: -155.726
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 us_posta;[Kl_codes_rr_state.zcr
+File Structure Type: ZCR;
+Version: 1.0;
+Header Record Size: 450;
+Record Size Integer Bytes: -1;
+Size Format Type: ASCII;
+Index File Name: us_postal_codes_rr_state.idx;
+Index File Schema: Key, Offset;
+Record Count: 40933;
+Fields Per Record: 6;
+Field 1: State, String;
+Field 2: Zip Code, Int;
+Field 3: Place Name, String;
+Field 4: County, String;
+Field 5: Lat, Double;
+Field 6: Long, Double;
+Primary Key: Zip Code;                                     
+43 HI,96737,Ocean View,Hawaii,19.1002,-155.726
+45 OR,97134,Oceanside,Tillamook,45.4549,-123.965
+55 MO,63701,Cape Girardeau,Cape Girardeau,37.3169,-89.5459
+34 NM,88250,Hope,Eddy,32.8156,-104.73
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 us_postal_codes_rr_state.zcr[21P./proj4_rand_state -0 -Z2673 -Z97134 -Z66045 -Z99999 [4PZ96737 -Z83303 -Z62524 -Z2673[8P1585 -Z90221 -Z13628[1P13628head -n 20 us_postal_codes_ROWS_RANDOMIZED.zcr./proj4_rand[Khead -n 20 us_postal_codes_ROWS_RANDOMIZED.zcr./proj4_rand[Khead -n 20 us_postal_codes_ROWS_RANDOMIZED.zcr[12P./proj4_rand -Z1585 -Z90221 -13628[1@_[1@s[1@t[1@a[1@t[1@e
+Zip Code: 1585
+Place Name: West Brookfield
+State: MA
+County: Worcester
+Latitude: 42.2441
+Longitude: -72.1511
+
+Zip Code: 90221
+Place Name: Compton
+State: CA
+County: Los Angeles
+Latitude: 33.8796
+Longitude: -118.217
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_rand_state -Z1585 -Z90221 -13628z13628[1P13628Z13628
+Zip Code: 1585
+Place Name: West Brookfield
+State: MA
+County: Worcester
+Latitude: 42.2441
+Longitude: -72.1511
+
+Zip Code: 90221
+Place Name: Compton
+State: CA
+County: Los Angeles
+Latitude: 33.8796
+Longitude: -118.217
+
+Zip Code: 13628
+Place Name: Deferiet
+State: NY
+County: Jefferson
+Latitude: 44.0356
+Longitude: -75.6838
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_rand_state -Z1585 -Z90221 -Z13628[1P13628[1Phead -n 20 us_postal_codes_rr_state.zcr[21P./proj4_rand_state -0 -Z2673 -Z97134 -Z66045 -Z99999 [4PZ96737 -Z83303 -Z62524 -Z26730 -Z2673 -Z97134 -Z66045 -Z99999 [4PZ96737 -Z83303 -Z62524 -Z2673[1@_[1@s[1@t[1@a[1@t[1@e
+Zip Code: 96737
+Place Name: Ocean View
+State: HI
+County: Hawaii
+Latitude: 19.1002
+Longitude: -155.726
+
+Zip Code: 83303
+Place Name: Twin Falls
+State: ID
+County: Twin Falls
+Latitude: 42.563
+Longitude: -114.461
+
+Zip Code: 62524
+Place Name: Decatur
+State: IL
+County: Macon
+Latitude: 39.854
+Longitude: -88.9815
+
+Zip Code: 2673
+Place Name: West Yarmouth
+State: MA
+County: Barnstable
+Latitude: 41.6614
+Longitude: -70.2363
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_rand_state -Z96737 -Z83303 -Z62524 -Z2673[8P1585 -Z90221 -Z13628[1P13628[1Phead -n 20 us_postal_codes_rr_state.zcr[21P./proj4_rand_statehead -n 20 us_postal_codes_rr_state.zcr./proj4_rand_state -Z1585 -Z90221 -13628Z1362896737 -Z83303 -Z62524 -Z2673[K./proj4_rand_state -Z96737 -Z83303 -Z62524 -Z2673[8P1585 -Z90221 -Z13628[1P13628[1Phead -n 20 us_postal_codes_rr_state.zcr[21P./proj4_rand_state -0 -Z2673 -Z97134 -Z66045 -Z99999 [1@z[1P[1@Z[1@_[1@S[1@T[1@A[1@T[1@E[1P[1P[1P[1P[1P[1@s[1@t[1@a[1@t[1@e
+No record found for zipcode: 0
+
+Zip Code: 2673
+Place Name: West Yarmouth
+State: MA
+County: Barnstable
+Latitude: 41.6614
+Longitude: -70.2363
+
+Zip Code: 97134
+Place Name: Oceanside
+State: OR
+County: Tillamook
+Latitude: 45.4549
+Longitude: -123.965
+
+Zip Code: 66045
+Place Name: Lawrence
+State: KS
+County: Douglas
+Latitude: 38.959
+Longitude: -95.2499
+
+No record found for zipcode: 99999
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./proj4_rand_state -Z0 -Z2673 -Z97134 -Z66045 -Z99999 [1P[1P[1P[1P[1P[1P
+No record found for zipcode: 0
+
+Zip Code: 2673
+Place Name: West Yarmouth
+State: MA
+County: Barnstable
+Latitude: 41.6614
+Longitude: -70.2363
+
+Zip Code: 97134
+Place Name: Oceanside
+State: OR
+County: Tillamook
+Latitude: 45.4549
+Longitude: -123.965
+
+Zip Code: 66045
+Place Name: Lawrence
+State: KS
+County: Douglas
+Latitude: 38.959
+Longitude: -95.2499
+
+No record found for zipcode: 99999
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ exit
+
+Script done on 2024-04-10 17:04:15+00:00 [COMMAND_EXIT_CODE="0"]

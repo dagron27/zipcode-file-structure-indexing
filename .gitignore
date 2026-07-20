@@ -1,0 +1,27 @@
+# Compiled binaries built from this project's g++ commands (see README.md
+# "Environment Setup"). These are extensionless ELF executables on Linux,
+# so they are excluded by exact filename rather than by extension pattern.
+proj3_original
+proj3_updated
+converter
+proj4_norm
+proj4_norm_place
+proj4_rand
+proj4_rand_state
+
+# Common build output patterns
+*.o
+*.obj
+*.out
+*.exe
+*.a
+*.so
+*.dylib
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# OS junk files
+.DS_Store
+Thumbs.db

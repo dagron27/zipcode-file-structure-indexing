@@ -1,0 +1,165 @@
+Script started on 2024-04-10 15:39:56+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="173" LINES="15"]
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ g++ -o converter fileConverter.cpp record[K[K[K[K[K[KheaderRecord.cpp headerBuffer.cpp buffer.cpp zipcode.cpp
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head [C-n 20 test1.csv
+"Zip Code","Place Name",State,County,Lat,Long
+501,Holtsville,NY,Suffolk,40.8154,-73.0451
+544,Holtsville,NY,Suffolk,40.8154,-73.0451
+1001,Agawam,MA,Hampden,42.0702,-72.6227
+1002,Amherst,MA,Hampshire,42.3671,-72.4646
+1003,Amherst,MA,Hampshire,42.3919,-72.5248
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 ts[Kest1.zcr
+head: cannot open 'test1.zcr' for reading: No such file or directory
+[0;32m@dagron27 [1;31m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./converter
+Enter the name of the CSV file: test1.csv
+Program began...
+Step 1: File < test1.csv > opened successfully
+Step 2: File < test1.zcr > opened successfully
+Step 3: Default header written to new .zcr
+Step 4: Records from .cvs written to new .zcr
+Step 5: Header updated for new .zcr
+File conversion complete...
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./converterhead -n 20 test1.zcrcsv
+"Zip Code","Place Name",State,County,Lat,Long
+501,Holtsville,NY,Suffolk,40.8154,-73.0451
+544,Holtsville,NY,Suffolk,40.8154,-73.0451
+1001,Agawam,MA,Hampden,42.0702,-72.6227
+1002,Amherst,MA,Hampshire,42.3671,-72.4646
+1003,Amherst,MA,Hampshire,42.3919,-72.5248
+
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 test1.csv[9P./converterhead -n 20 test1.zcr
+File Structure Type: ZCR;
+Version: 1.0;
+Header Record Size: 450;
+Record Size Integer Bytes: -1;
+Size Format Type: ASCII;
+Index File Name: primaryKey.idx;
+Index File Schema: Key, Offset;
+Record Count: 5;
+Fields Per Record: 6;
+Field 1: Zip Code, Int;
+Field 2: Place Name, String;
+Field 3: State, String;
+Field 4: County, String;
+Field 5: Lat, Double;
+Field 6: Long, Double;
+Primary Key: Zip Code;                                                       
+42 501,Holtsville,NY,Suffolk,40.8154,-73.0451
+42 544,Holtsville,NY,Suffolk,40.8154,-73.0451
+39 1001,Agawam,MA,Hampden,42.0702,-72.6227
+42 1002,Amherst,MA,Hampshire,42.3671,-72.4646
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 test1.zcrcsv[9P./converter
+Enter the name of the CSV file: test2.csv
+Program began...
+Step 1: File < test2.csv > opened successfully
+Step 2: File < test2.zcr > opened successfully
+Step 3: Default header written to new .zcr
+Step 4: Records from .cvs written to new .zcr
+Step 5: Header updated for new .zcr
+File conversion complete...
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./converterhead -n 20 test1.zcrcsv[1P.csv2.csv
+"Zip Code","Place Name",State,County,Lat,Long
+501,Holtsville,NY,Suffolk,40.8154,-73.0451
+544,Holtsville,NY,Suffolk,40.8154,-73.0451
+1001,Agawam,MA,Hampden,42.0702,-72.6227
+1002,Amherst,MA,Hampshire,42.3671,-72.4646
+1003,Amherst,MA,Hampshire,42.3919,-72.5248
+1004,Amherst,MA,Hampshire,42.3845,-72.5132
+1005,Barre,MA,Worcester,42.4097,-72.1084
+1007,Belchertown,MA,Hampshire,42.2751,-72.411
+1008,Blandford,MA,Hampden,42.1829,-72.9361
+1009,Bondsville,MA,Hampden,42.2061,-72.3405
+1010,Brimfield,MA,Hampden,42.1165,-72.1885
+1011,Chester,MA,Hampden,42.2794,-72.9888
+1012,Chesterfield,MA,Hampshire,42.3923,-72.8256
+1013,Chicopee,MA,Hampden,42.1487,-72.6079
+1014,Chicopee,MA,Hampden,42.1707,-72.6048
+1020,Chicopee,MA,Hampden,42.1764,-72.5761
+1021,Chicopee,MA,Hampden,42.1707,-72.6048
+1022,Chicopee,MA,Hampden,42.1934,-72.5544
+1026,Cummington,MA,Hampshire,42.4633,-72.9202
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 test2.csv[9P./converterhead -n 20 test1.zcr[1P.zcr2.zcr
+File Structure Type: ZCR;
+Version: 1.0;
+Header Record Size: 450;
+Record Size Integer Bytes: -1;
+Size Format Type: ASCII;
+Index File Name: primaryKey.idx;
+Index File Schema: Key, Offset;
+Record Count: 199;
+Fields Per Record: 6;
+Field 1: Zip Code, Int;
+Field 2: Place Name, String;
+Field 3: State, String;
+Field 4: County, String;
+Field 5: Lat, Double;
+Field 6: Long, Double;
+Primary Key: Zip Code;                                                     
+42 501,Holtsville,NY,Suffolk,40.8154,-73.0451
+42 544,Holtsville,NY,Suffolk,40.8154,-73.0451
+39 1001,Agawam,MA,Hampden,42.0702,-72.6227
+42 1002,Amherst,MA,Hampshire,42.3671,-72.4646
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 test2.zcrcsv[9P./converter
+Enter the name of the CSV file: test2 3.csv
+Program began...
+Step 1: File < test3.csv > opened successfully
+Step 2: File < test3.zcr > opened successfully
+Step 3: Default header written to new .zcr
+Step 4: Records from .cvs written to new .zcr
+Step 5: Header updated for new .zcr
+File conversion complete...
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./converterhead -n 20 test2.zcrcsv[1P.csv3.csv
+"Zip Code","Place Name",State,County,Lat,Long
+96737,Ocean View,HI,Hawaii,19.1002,-155.7258
+97134,Oceanside,OR,Tillamook,45.4549,-123.965
+63701,Cape Girardeau,MO,Cape Girardeau,37.3169,-89.5459
+88250,Hope,NM,Eddy,32.8156,-104.7299
+64444,Edgerton,MO,Platte,39.4742,-94.6352
+15450,La Belle,PA,Fayette,39.9983,-79.9754
+94278,Sacramento,CA,Sacramento,38.5816,-121.4944
+97875,Stanfield,OR,Umatilla,45.786,-119.2116
+68113,Offutt Afb,NE,Sarpy,41.2563,-95.9404
+61536,Hanna City,IL,Peoria,40.6798,-89.7952
+96837,Honolulu,HI,Honolulu,21.315,-157.8633
+93465,Templeton,CA,San Luis Obispo,35.5551,-120.7107
+92807,Anaheim,CA,Orange,33.8544,-117.7858
+29936,Ridgeland,SC,Jasper,32.4807,-80.9804
+45646,Latham,OH,Pike,39.0804,-83.3283
+98119,Seattle,WA,King,47.6379,-122.3643
+18660,Wapwallopen,PA,Luzerne,41.068,-76.0857
+45769,Pomeroy,OH,Meigs,39.0607,-82.0331
+72450,Paragould,AR,Greene,36.06,-90.5251
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 test3.csv[9P./converterhead -n 20 test2.zcr[1P.zcr3.zcr
+File Structure Type: ZCR;
+Version: 1.0;
+Header Record Size: 450;
+Record Size Integer Bytes: -1;
+Size Format Type: ASCII;
+Index File Name: primaryKey.idx;
+Index File Schema: Key, Offset;
+Record Count: 40933;
+Fields Per Record: 6;
+Field 1: Zip Code, Int;
+Field 2: Place Name, String;
+Field 3: State, String;
+Field 4: County, String;
+Field 5: Lat, Double;
+Field 6: Long, Double;
+Primary Key: Zip Code;                                                   
+43 96737,Ocean View,HI,Hawaii,19.1002,-155.726
+45 97134,Oceanside,OR,Tillamook,45.4549,-123.965
+55 63701,Cape Girardeau,MO,Cape Girardeau,37.3169,-89.5459
+34 88250,Hope,NM,Eddy,32.8156,-104.73
+[0;32m@dagron27 [0m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ head -n 20 test3.zcrcsv[9P./converter
+Enter the name of the CSV file: sfsdfsdfsdfsdf
+Program began...
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  basic_string::substr: __pos (which is 18446744073709551615) > this->size() (which is 14)
+Aborted (core dumped)
+[0;32m@dagron27 [1;31m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ ./converter
+Enter the name of the CSV file: test3.zcr
+Program began...
+Error: Input file is not a CSV file.
+[0;32m@dagron27 [1;31m➜ [1;34m/workspaces/csci331-spring-24-project4-dagron27 [0;36m([1;31mmain[0;36m) [0m$ exit
+
+Script done on 2024-04-10 15:42:48+00:00 [COMMAND_EXIT_CODE="1"]

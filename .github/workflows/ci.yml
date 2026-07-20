@@ -1,0 +1,138 @@
+# CI workflow for the CSCI 331 zipcode file-structures project.
+#
+# There is no Makefile or CMakeLists.txt in this repository (see README.md,
+# "Environment Setup"). The build commands below are copied verbatim from
+# that section, which itself was reverse-engineered from the project's own
+# committed script(1) terminal transcripts (docs/transcripts/req3_script.txt,
+# docs/transcripts/req4_script.txt, docs/transcripts/req7_script.txt,
+# docs/transcripts/req8_script.txt). Do not "simplify" these into a single
+# g++ invocation or a Makefile here - the point of this workflow is to keep
+# building the project exactly the way the README documents it.
+
+name: CI
+
+# Run on every push, to any branch, and allow manually triggering a run
+# from the Actions tab.
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    # ubuntu-latest ships g++ preinstalled, which is all this project needs
+    # (no third-party libraries, just the C++ standard library).
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository so the compiler has the source files and
+      # the committed data/ .csv files to work with.
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Show g++ version
+        run: g++ --version
+
+      # --- Build target 1: proj3_original ---
+      # Project 3, original version: reads a plain .csv file directly
+      # through the simple windowed Buffer/Zipcode classes.
+      - name: Compile proj3_original (Project 3, CSV-based, no header/index)
+        run: g++ -o proj3_original src/proj3.cpp src/buffer.cpp src/zipcode.cpp
+
+      # --- Build target 2: proj3_updated ---
+      # Project 3 logic re-targeted at the .zcr format (Buffer2/Zipcode2).
+      - name: Compile proj3_updated (Project 3 logic against the .zcr format)
+        run: g++ -o proj3_updated src/proj3Updated.cpp src/buffer2.cpp src/zipcode2.cpp
+
+      # --- Build target 3: converter ---
+      # Converts a .csv file into the project's custom .zcr (header +
+      # length-indicated records) format. This is the program containing
+      # the fileConverter.cpp fix for the uncaught std::out_of_range
+      # exception on filenames without a "." (see README, Security /
+      # Robustness Findings).
+      - name: Compile converter (CSV to ZCR file converter)
+        run: g++ -o converter src/fileConverter.cpp src/headerRecord.cpp src/headerBuffer.cpp src/buffer.cpp src/zipcode.cpp
+
+      # --- Build target 4: proj4_norm (representative of proj4_norm / proj4_norm_place / proj4_rand / proj4_rand_state) ---
+      # The README explicitly documents that all four proj4_* binaries are
+      # the SAME source combination, compiled four separate times, with the
+      # only difference being which renamed data-file variant
+      # (data/us_postal_codes.zcr/.idx) happens to be present on disk at
+      # build time. Since the source and compile command are identical for all
+      # four, compiling it once here fully verifies that source combination;
+      # repeating the identical g++ command three more times under
+      # different -o names would not exercise any additional code. This is
+      # also the binary containing the headerRecord.cpp fix for the
+      # out-of-bounds vector write in HeaderRecord::Unpack().
+      - name: Compile proj4_norm (findZipcode + primaryKeyIndex against .zcr/.idx)
+        run: g++ -o proj4_norm src/findZipcode.cpp src/primaryKeyIndex.cpp src/headerRecord.cpp src/headerBuffer.cpp src/buffer2.cpp src/zipcode2.cpp
+
+      # --- Runtime smoke test for the fileConverter.cpp fix ---
+      # fileConverter.cpp prompts interactively ("Enter the name of the CSV
+      # file: ") and reads the filename with `std::cin >> csvFileName`
+      # rather than taking it as a command-line argument. That prompt/read
+      # is still a simple, single-value, non-interactive-scriptable input:
+      # piping one line into stdin reproduces the exact documented usage
+      # without needing any multi-step interactive session.
+      #
+      # Case A: a filename with no "." at all. This is the exact input
+      # (`sfsdfsdfsdfsdf`) recorded in the project's own transcript
+      # (docs/transcripts/req4_script.txt:153-158) that used to crash the program with
+      # `terminate called after throwing an instance of 'std::out_of_range'`
+      # (SIGABRT). After the fix, csvFileName.rfind(".") returning npos is
+      # checked before substr() is called, so the program should instead
+      # print the documented "not a CSV file" error and exit cleanly with
+      # status 1. We assert the process does not abort (non-zero exit code
+      # from a signal, e.g. 134 for SIGABRT) and instead exits with the
+      # expected status 1.
+      - name: Runtime smoke test - converter with a filename lacking "."
+        run: |
+          set +e
+          output=$(echo "sfsdfsdfsdfsdf" | ./converter 2>&1)
+          status=$?
+          echo "$output"
+          if [ $status -eq 134 ]; then
+            echo "FAIL: converter aborted (SIGABRT) on a filename with no '.' - the fileConverter.cpp fix appears to be missing."
+            exit 1
+          fi
+          if [ $status -ne 1 ]; then
+            echo "FAIL: expected converter to exit with status 1 (graceful rejection), got $status."
+            exit 1
+          fi
+          if ! echo "$output" | grep -q "Input file is not a CSV file"; then
+            echo "FAIL: expected the documented 'Input file is not a CSV file.' message."
+            exit 1
+          fi
+          echo "PASS: converter rejected a filename with no '.' cleanly instead of crashing."
+
+      # Case B: a normal, well-formed conversion using one of the committed
+      # small sample CSV files (data/test1.csv), matching the README's
+      # documented workflow of running converter against a .csv file to
+      # produce a .zcr file. This exercises the header-writing code path in
+      # headerRecord.cpp/headerBuffer.cpp on a successful run, in addition
+      # to the error path exercised above.
+      - name: Runtime smoke test - converter with a valid CSV file
+        run: |
+          set +e
+          output=$(echo "data/test1.csv" | ./converter 2>&1)
+          status=$?
+          echo "$output"
+          if [ $status -ne 0 ]; then
+            echo "FAIL: expected converter to exit 0 on a valid CSV file, got $status."
+            exit 1
+          fi
+          if ! echo "$output" | grep -q "File conversion complete"; then
+            echo "FAIL: expected the documented 'File conversion complete...' message."
+            exit 1
+          fi
+          echo "PASS: converter completed a normal CSV to ZCR conversion."
+
+      # Note on headerRecord.cpp's out-of-bounds vector write fix: that bug
+      # only manifests when a .zcr/.idx header is corrupted or crafted to
+      # claim more fields (fieldsPerRecord) than HeaderRecord was
+      # constructed with. Every header produced by this codebase's own
+      # tools always matches (fieldsPerRecord == 6), so reproducing the bug
+      # requires hand-crafting a malformed header file - a multi-step setup
+      # rather than a single documented command-line invocation. Per the
+      # task scope, that scenario is left to compile-time verification only
+      # (the proj4_norm and converter builds above both compile
+      # headerRecord.cpp) rather than a scripted runtime repro here.
